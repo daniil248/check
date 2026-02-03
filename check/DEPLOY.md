@@ -1,0 +1,1 @@
+Свой домен, один сервер. Копируешь папку check на сервер (FTP, SCP — как удобно). В backend создаёшь .env: SECRET_KEY, ALLOWED_ORIGINS=https://твой-домен, OPENSANCTIONS_API_KEY. В папке backend: pip install -r requirements.txt, uvicorn main:app --host 0.0.0.0 --port 8000. Сайт и API с одного порта. Nginx + SSL по желанию — прокси на 127.0.0.1:8000.

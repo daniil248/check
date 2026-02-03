@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет — NorthPak Logistics</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="./" class="logo">
+                <img src="logo.jpeg" alt="NorthPak Logistics" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Главная</a></li>
+                <li><a href="/#features">Возможности</a></li>
+                <li><a href="/#contact">Контакты</a></li>
+                <li><a href="/cabinet" class="nav-cabinet">Личный кабинет</a></li>
+                <li><a href="#" class="nav-logout" id="nav-logout">Выйти</a></li>
+                <li class="lang-switcher">
+                    <button type="button" class="lang-btn" data-lang="ru">RU</button>
+                    <button type="button" class="lang-btn" data-lang="en">EN</button>
+                    <button type="button" class="lang-btn" data-lang="zh">中文</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="cabinet-page">
+            <h1 class="cabinet-title">Личный кабинет</h1>
+            <div id="cabinet-loading" class="cabinet-loading">Загрузка...</div>
+            <div id="cabinet-content" class="cabinet-content" style="display: none;">
+                <div class="cabinet-card">
+                    <div class="cabinet-avatar" id="cabinet-avatar"></div>
+                    <div class="cabinet-info">
+                        <p class="cabinet-name" id="cabinet-name"></p>
+                        <p class="cabinet-email" id="cabinet-email"></p>
+                    </div>
+                </div>
+                <div class="cabinet-actions">
+                    <a href="/" class="cabinet-btn">К поиску контрагентов</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-contacts">
+                <span>NorthPak Logistics — проверка контрагентов.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/cabinet.js"></script>
+</body>
+</html>

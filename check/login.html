@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход — NorthPak Logistics</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-card">
+            <a href="/" class="auth-logo">
+                <img src="logo.jpeg" alt="NorthPak" class="auth-logo-img">
+            </a>
+            <h1>Вход в сервис</h1>
+            <p class="auth-hint">Проверка контрагентов</p>
+
+            <div id="auth-error" class="auth-error" style="display: none;"></div>
+
+            <form id="login-form" class="auth-form">
+                <input type="email" name="email" placeholder="Email" required autocomplete="email">
+                <input type="password" name="password" placeholder="Пароль" required autocomplete="current-password">
+                <button type="submit" class="auth-btn">Войти</button>
+                <a href="/api/auth/google" class="auth-google-btn">Войти через Google</a>
+            </form>
+
+            <form id="register-form" class="auth-form">
+                <input type="email" name="email" placeholder="Email" required autocomplete="email">
+                <input type="password" name="password" placeholder="Пароль (не менее 6 символов)" required minlength="6" autocomplete="new-password">
+                <button type="submit" class="auth-btn auth-btn-secondary">Регистрация</button>
+            </form>
+
+            <p class="auth-switch">
+                <a href="#" id="toggle-register">Нет аккаунта? Зарегистрироваться</a>
+                <a href="#" id="toggle-login" style="display: none;">Уже есть аккаунт? Войти</a>
+            </p>
+        </div>
+    </div>
+    <script src="js/auth.js"></script>
+</body>
+</html>
