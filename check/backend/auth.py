@@ -53,7 +53,7 @@ def create_user(email: str, password: str) -> dict:
     try:
         conn.execute(
             "INSERT INTO users (email, password_hash, created_at) VALUES (?, ?, ?)",
-            (email.strip().lower(), pwd_context.hash(password), datetime.utcnow().isoformat()),
+            (email.strip().lower(), pwd_context.hash(password[:72]), datetime.utcnow().isoformat()),
         )
         conn.commit()
         row = conn.execute("SELECT id, email, created_at FROM users WHERE email = ?", (email.strip().lower(),)).fetchone()
