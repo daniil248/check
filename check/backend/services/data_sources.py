@@ -161,28 +161,69 @@ async def search_data_egov(query: str) -> list[dict]:
 async def search_counterparty(query: str, country: str = "kz") -> dict:
     """
     Главная функция поиска. Пробует все источники.
+    ПРИОРИТЕТ: Платные API > Stat.gov.kz > Демо
     """
     if not query or len(query.strip()) < 2:
         return {"success": False, "error": "Слишком короткий запрос", "results": []}
 
     results = []
+    seen = set()
 
-    # 1. Data.egov.kz Open Data (медорганизации, аптеки, нотариусы, ЦОНы)
-    egov_results = await search_data_egov(query)
-    results.extend(egov_results)
+    # 1. Sensus.kz API (платный, полный реестр ЮЛ)
+    sensus_key = os.getenv("SENSUS_API_KEY", "")
+    if sensus_key:
+        try:
+            from sensus_api import search_sensus_companies
+            sensus_results = await search_sensus_companies(query)
+            for r in sensus_results:
+                key = r.get("bin") or r.get("name", "")
+                if key and key not in seen:
+                    results.append(r)
+                    seen.add(key)
+        except Exception as e:
+            print(f"Sensus.kz error: {e}")
 
-    # 2. Демо (для отладки)
-    demo = search_demo(query)
-    results.extend(demo)
+    # 2. Adata.kz API (платный, полный реестр ЮЛ)
+    adata_key = os.getenv("ADATA_API_KEY", "")
+    if adata_key:
+        try:
+            from adata_api import search_adata_companies
+            adata_results = await search_adata_companies(query)
+            for r in adata_results:
+                key = r.get("bin") or r.get("name", "")
+                if key and key not in seen:
+                    results.append(r)
+                    seen.add(key)
+        except Exception as e:
+            print(f"Adata.kz error: {e}")
 
-    # 3. OpenSanctions (если есть ключ) — дополняем санкциями/PEP
+    # 3. Stat.gov.kz парсинг (бесплатно, только по БИН)
+    try:
+        from statgov_parser import search_companies_statgov
+        statgov_results = await search_companies_statgov(query)
+        for r in statgov_results:
+            key = r.get("bin") or r.get("name", "")
+            if key and key not in seen:
+                results.append(r)
+                seen.add(key)
+    except Exception as e:
+        print(f"Stat.gov.kz error: {e}")
+
+    # 4. Демо-данные (если ничего не нашли или для отладки)
+    if not results or "northpak" in query.lower() or "250240010778" in query:
+        demo = search_demo(query)
+        for r in demo:
+            key = r.get("bin") or r.get("name", "")
+            if key and key not in seen:
+                results.append(r)
+                seen.add(key)
+
+    # 5. OpenSanctions (санкции/PEP проверка)
     if OPENSANCTIONS_API_KEY:
         os_results = await search_opensanctions(query, country)
-        # избегаем дублей по БИН/названию
-        seen = {r.get("bin") or r.get("name", "") for r in results}
         for r in os_results:
             key = r.get("bin") or r.get("name", "")
-            if key not in seen:
+            if key and key not in seen:
                 results.append(r)
                 seen.add(key)
 
