@@ -78,22 +78,15 @@ body {
 .header-contacts {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-}
-
-.contacts-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+    gap: 1rem;
 }
 
 .header-contacts .tel {
     color: var(--text-white);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 700;
     text-decoration: none;
     transition: color 0.3s ease;
-    white-space: nowrap;
 }
 
 .header-contacts .tel:hover {
