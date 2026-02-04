@@ -141,17 +141,21 @@ def _first(val):
 
 async def search_data_egov(query: str) -> list[dict]:
     """
-    Поиск через data.egov.kz (если есть подходящий датасет).
-    Сейчас пробуем общие датасеты — реестр юрлиц может требовать API ключ.
+    Поиск через data.egov.kz Open Data API.
+    Ищем по медорганизациям, аптекам, нотариусам, ЦОНам и др.
     """
-    bin_clean = _normalize_bin(query)
-    if len(bin_clean) != 12:
+    if len(query.strip()) < 2:
         return []
-
-    # data.egov.kz — список датасетов по Агентству статистики
-    # Нужен апстрим: https://data.egov.kz/datasets/listbygovagency
-    # Пока возвращаем пустой список — нужна регистрация для API ключа
-    return []
+    
+    # Импортируем функцию поиска по всем наборам data.egov.kz
+    from egov_api import search_all_egov
+    
+    try:
+        results = await search_all_egov(query)
+        return results
+    except Exception as e:
+        print(f"Ошибка при поиске в data.egov.kz: {e}")
+        return []
 
 
 async def search_counterparty(query: str, country: str = "kz") -> dict:
@@ -163,11 +167,15 @@ async def search_counterparty(query: str, country: str = "kz") -> dict:
 
     results = []
 
-    # 1. Демо (всегда работает)
+    # 1. Data.egov.kz Open Data (медорганизации, аптеки, нотариусы, ЦОНы)
+    egov_results = await search_data_egov(query)
+    results.extend(egov_results)
+
+    # 2. Демо (для отладки)
     demo = search_demo(query)
     results.extend(demo)
 
-    # 2. OpenSanctions (если есть ключ) — дополняем санкциями/PEP
+    # 3. OpenSanctions (если есть ключ) — дополняем санкциями/PEP
     if OPENSANCTIONS_API_KEY:
         os_results = await search_opensanctions(query, country)
         # избегаем дублей по БИН/названию
