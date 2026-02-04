@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NorthPak Logistics — Международные перевозки из Китая</title>
-    <meta name="description" content="Грузоперевозки из Китая, Европы, Турции. Авто, ЖД, авиа доставка. Таможенное оформление. 10 лет опыта.">
+    <meta name="description" content="Грузоперевозки из Китая, Европы, Турции. Автомобильная доставка. Таможенное оформление. 10 лет опыта.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/favicon.ico" type="image/jpeg">
     <link rel="stylesheet" href="/css/main.css">
 </head>
@@ -26,6 +26,11 @@
                         </svg>
                     </a>
                 </div>
+                <div class="lang-switcher">
+                    <button type="button" class="lang-btn" data-lang="ru">RU</button>
+                    <button type="button" class="lang-btn" data-lang="en">EN</button>
+                    <button type="button" class="lang-btn" data-lang="zh">中文</button>
+                </div>
             </div>
         </div>
     </header>
@@ -34,49 +39,49 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1>Международные перевозки<br>из любой точки мира<br><span class="highlight">без предоплаты</span></h1>
+                    <h1 data-i18n="heroTitle">Международные перевозки<br>из любой точки мира<br><span class="highlight">без предоплаты</span></h1>
                     <div class="hero-features">
                         <div class="feature-item">
                             <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                             </svg>
-                            <span>від 50 кг</span>
+                            <span data-i18n="fromWeight">от 50 кг</span>
                         </div>
                         <div class="feature-item">
                             <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                             </svg>
-                            <span>від 3 днів</span>
+                            <span data-i18n="fromDays">от 3 дней</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="hero-form">
                     <form class="request-form" action="/api/contact" method="post">
-                        <h3>Розрахуємо вартість доставки за 15 хвилин</h3>
+                        <h3 data-i18n="formTitle">Рассчитаем стоимость доставки за 15 минут</h3>
                         
                         <div class="delivery-types">
                             <label>
                                 <input type="radio" name="type" value="road" checked>
-                                <span>🚛 Автомобільна доставка</span>
+                                <span data-i18n="autoDelivery">🚛 Автомобильная доставка</span>
                             </label>
                         </div>
-                        <p class="delivery-info">Експрес 7-13 днів • Стандарт 15-25 днів • Власний автопарк</p>
+                        <p class="delivery-info" data-i18n="deliveryInfo">Экспресс 7-13 дней • Стандарт 15-25 дней • Собственный автопарк</p>
 
                         <div class="form-fields">
-                            <input type="text" name="from" placeholder="Звідки товар" required>
-                            <input type="text" name="to" placeholder="Куди потрібно доставити" required>
-                            <input type="text" name="weight" placeholder="Вага товару (кг)" required>
-                            <input type="tel" name="phone" placeholder="Телефон" required>
-                            <input type="text" name="name" placeholder="Ім'я та прізвище" required>
+                            <input type="text" name="from" placeholder="Где находится товар" data-i18n-placeholder="whereFrom" required>
+                            <input type="text" name="to" placeholder="Куда нужно доставить" data-i18n-placeholder="whereTo" required>
+                            <input type="text" name="weight" placeholder="Вес товара (кг)" data-i18n-placeholder="weight" required>
+                            <input type="tel" name="phone" placeholder="Телефон" data-i18n-placeholder="phone" required>
+                            <input type="text" name="name" placeholder="Имя и фамилия" data-i18n-placeholder="name" required>
                         </div>
 
                         <label class="checkbox-label">
                             <input type="checkbox" name="agree" checked required>
-                            <span>Я згоден з <a href="#">Політикою конфіденційності</a></span>
+                            <span data-i18n="agreePolicy">Я согласен с <a href="#">Политикой конфиденциальности</a></span>
                         </label>
 
-                        <button type="submit" class="btn btn-primary">Розрахувати вартість</button>
+                        <button type="submit" class="btn btn-primary" data-i18n="calculate">Рассчитать стоимость</button>
                     </form>
                 </div>
             </div>
@@ -84,7 +89,7 @@
 
         <section class="services">
             <div class="container">
-                <h2>10 років досвіду доставки в Казахстан — ми знаємо, як уникнути затримок</h2>
+                <h2 data-i18n="servicesTitle">10 лет опыта доставки в Казахстан — мы знаем, как избежать задержек</h2>
                 
                 <div class="services-grid">
                     <div class="service-card">
@@ -93,23 +98,23 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                             </svg>
                         </div>
-                        <h3>Авто доставка</h3>
+                        <h3 data-i18n="autoDeliveryTitle">Авто доставка</h3>
                         <div class="service-labels">
-                            <span>експрес 7-13 днів</span>
-                            <span>стандарт 15-25 днів</span>
-                            <span>власний автотранспорт</span>
+                            <span data-i18n="express">экспресс 7-13 дней</span>
+                            <span data-i18n="standard">стандарт 15-25 дней</span>
+                            <span data-i18n="ownFleet">собственный автотранспорт</span>
                         </div>
                     </div>
 
                     <div class="service-card">
                         <div class="service-icon">
                             <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                             </svg>
                         </div>
-                        <h3>Митне оформлення</h3>
+                        <h3 data-i18n="customsTitle">Таможенное оформление</h3>
                         <div class="service-labels">
-                            <span>від 15 хв. і максимум за 2 дні</span>
+                            <span data-i18n="customsTime">от 15 мин. и максимум за 2 дня</span>
                         </div>
                     </div>
 
@@ -119,22 +124,21 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
                             </svg>
                         </div>
-                        <h3>Термінал</h3>
+                        <h3 data-i18n="warehouseTitle">Складское хранение</h3>
                         <div class="service-labels">
-                            <span>власний термінал 100 тис. м²</span>
+                            <span data-i18n="warehouseSize">собственный терминал 100 тыс. м²</span>
                         </div>
                     </div>
 
                     <div class="service-card">
                         <div class="service-icon">
                             <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                             </svg>
                         </div>
-                        <h3>Мультимодальні перевезення</h3>
+                        <h3 data-i18n="insuranceTitle">Страхование грузов</h3>
                         <div class="service-labels">
-                            <span>стандарт 15-25 днів</span>
-                            <span>склади в усіх великих містах світу</span>
+                            <span data-i18n="insurance">полное покрытие рисков</span>
                         </div>
                     </div>
                 </div>
@@ -147,33 +151,33 @@
                     <div class="about-intro">
                         <div class="label">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"/>
                             </svg>
-                            <span>Логістика без головного болю</span>
+                            <span data-i18n="noHeadache">Логистика без головной боли</span>
                         </div>
-                        <h2>Ми гарантуємо безпечну доставку вашого вантажу</h2>
+                        <h2 data-i18n="guarantee">Мы гарантируем безопасную доставку вашего груза</h2>
                     </div>
 
                     <div class="stats-grid">
                         <div class="stat-item">
                             <div class="stat-number">1,000,000+</div>
-                            <div class="stat-label">тонн об'єму за рік</div>
+                            <div class="stat-label" data-i18n="volumeYear">тонн объема за год</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">15,000</div>
-                            <div class="stat-label">порожніх контейнерів за рік</div>
+                            <div class="stat-label" data-i18n="containers">порожних контейнеров за год</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">400+</div>
-                            <div class="stat-label">клієнтів на рік</div>
+                            <div class="stat-label" data-i18n="clients">клиентов в год</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">30+</div>
-                            <div class="stat-label">співробітників</div>
+                            <div class="stat-label" data-i18n="employees">сотрудников</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">10+</div>
-                            <div class="stat-label">років досвіду</div>
+                            <div class="stat-label" data-i18n="experience">лет опыта</div>
                         </div>
                     </div>
                 </div>
@@ -185,17 +189,8 @@
                                 <path stroke-width="2" d="M18.669 10.468c.479.684 1.87 1.232 3.153 1.61 1.654.49 3.38.72 5.1.613 1.29-.08 2.756-.317 3.637-.934"/>
                             </svg>
                         </div>
-                        <h3>Власний термінал 100 тис. м²</h3>
-                        <p>Відеоспостереження 24/7<br>Пропускний режим з авторизацією по ID</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg width="39" height="39" fill="none" stroke="currentColor" viewBox="0 0 39 39">
-                                <path stroke-width="2" d="M18.669 10.468c.479.684 1.87 1.232 3.153 1.61"/>
-                            </svg>
-                        </div>
-                        <h3>Власний транспортний відділ в Китаї та Грузії</h3>
+                        <h3 data-i18n="terminal">Собственный терминал 100 тыс. м²</h3>
+                        <p data-i18n="terminalDesc">Видеонаблюдение 24/7<br>Пропускной режим с авторизацией по ID</p>
                     </div>
 
                     <div class="feature-card">
@@ -205,8 +200,8 @@
                                 <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"/>
                             </svg>
                         </div>
-                        <h3>Страхування</h3>
-                        <p>Повернемо гроші<br>Покриття ризиків: крадіжка, пошкодження, втрата, форс-мажор та ін.</p>
+                        <h3 data-i18n="insuranceTitle">Страхование</h3>
+                        <p data-i18n="insuranceDesc">Вернем деньги<br>Покрытие рисков: кража, повреждение, утрата, форс-мажор и др.</p>
                     </div>
 
                     <div class="feature-card">
@@ -215,8 +210,8 @@
                                 <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                             </svg>
                         </div>
-                        <h3>Онлайн-трекінг 24/7</h3>
-                        <p>Відстеження вантажу в реальному часі з авто-повідомленнями при проходженні кордонів</p>
+                        <h3 data-i18n="trackingTitle">Онлайн-трекинг 24/7</h3>
+                        <p data-i18n="trackingDesc">Отслеживание груза в реальном времени с авто-уведомлениями при прохождении границ</p>
                     </div>
                 </div>
             </div>
@@ -224,83 +219,122 @@
 
         <section class="company-info">
             <div class="container">
-                <h2>Про компанію</h2>
+                <h2 data-i18n="aboutTitle">О компании</h2>
                 <div class="info-grid">
                     <div class="info-text">
-                        <p><strong>ТОВ "NorthPak Logistics"</strong> — надійний партнер у сфері міжнародних вантажоперевезень та логістики між Казахстаном, Китаєм та країнами СНД.</p>
-                        <p>Ми спеціалізуємося на повному циклі логістичних послуг: від організації перевезення до митного оформлення та складського зберігання.</p>
+                        <p><strong>ТОО "NorthPak Logistics"</strong> <span data-i18n="aboutText1">— надежный партнер в области международных грузоперевозок и логистики между Казахстаном, Китаем и странами СНГ.</span></p>
+                        <p data-i18n="aboutText2">Мы специализируемся на полном цикле логистических услуг: от организации перевозки до таможенного оформления и складского хранения.</p>
                         
                         <div class="company-details">
                             <div class="detail-row">
-                                <span class="detail-label">Повна назва:</span>
-                                <span class="detail-value">Товариство з обмеженою відповідальністю «NorthPak Logistics»</span>
+                                <span class="detail-label" data-i18n="fullName">Полное наименование:</span>
+                                <span class="detail-value">Товарищество с ограниченной ответственностью «NorthPak Logistics»</span>
                             </div>
                             <div class="detail-row">
-                                <span class="detail-label">БІН:</span>
+                                <span class="detail-label">БИН:</span>
                                 <span class="detail-value">250240010778</span>
                             </div>
                             <div class="detail-row">
-                                <span class="detail-label">Юридична адреса:</span>
-                                <span class="detail-value">081100, Жамбильська область, Шуський район, с. Толе бі, вул. Гагаріна, 44</span>
+                                <span class="detail-label" data-i18n="legalAddress">Юридический адрес:</span>
+                                <span class="detail-value">081100, Жамбылская область, Шуский район, с. Толе би, ул. Гагарина, 44</span>
                             </div>
                             <div class="detail-row">
-                                <span class="detail-label">Керівник:</span>
-                                <span class="detail-value">Пак Юлія Володимирівна</span>
+                                <span class="detail-label" data-i18n="director">Руководитель:</span>
+                                <span class="detail-value">Пак Юлия Владимировна</span>
                             </div>
                             <div class="detail-row">
-                                <span class="detail-label">Рік заснування:</span>
+                                <span class="detail-label" data-i18n="founded">Год основания:</span>
                                 <span class="detail-value">2024</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="info-image">
-                        <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&q=80" alt="Вантажні перевезення">
+                        <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&q=80" alt="Грузовые перевозки">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="contact-section">
+        <section class="contact-section" id="contact">
             <div class="container">
-                <h2>Зв'яжіться з нами</h2>
-                <p class="section-subtitle">Напишіть в WhatsApp — відповімо в зручний для вас час</p>
+                <h2 data-i18n="contactUs">Свяжитесь с нами</h2>
+                <p class="section-subtitle" data-i18n="contactSubtitle">Напишите в WhatsApp — ответим в удобное для вас время</p>
 
-                <div class="contacts-grid">
-                    <a href="https://wa.me/77003388050" class="contact-card" target="_blank">
-                        <div class="contact-icon">
-                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <a href="https://wa.me/77473738113" class="whatsapp-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 19 19" fill="none">
+                                <path d="M9.5 0C14.7469 0 19 4.25315 19 9.49999C19 14.7468 14.7469 19 9.5 19C7.82112 19.0029 6.17176 18.5586 4.72151 17.7127L0.00381468 19L1.28821 14.2804C0.441725 12.8297 -0.00292754 11.1796 1.45052e-05 9.49999C1.45052e-05 4.25315 4.25316 0 9.5 0Z" fill="#25D366"/>
                             </svg>
-                        </div>
-                        <div class="contact-info">
-                            <h3>+7 700 338 8050</h3>
-                            <p>Написати в WhatsApp</p>
-                        </div>
-                    </a>
+                        </a>
+                        <h3>Пак Юлия Владимировна</h3>
+                        <p class="role" data-i18n="directorRole">Руководитель</p>
+                        <a href="tel:+77473738113" class="phone">+7 747 373 81 13</a>
+                    </div>
 
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                    <div class="team-card">
+                        <a href="https://wa.me/77084878927" class="whatsapp-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 19 19" fill="none">
+                                <path d="M9.5 0C14.7469 0 19 4.25315 19 9.49999C19 14.7468 14.7469 19 9.5 19C7.82112 19.0029 6.17176 18.5586 4.72151 17.7127L0.00381468 19L1.28821 14.2804C0.441725 12.8297 -0.00292754 11.1796 1.45052e-05 9.49999C1.45052e-05 4.25315 4.25316 0 9.5 0Z" fill="#25D366"/>
                             </svg>
-                        </div>
-                        <div class="contact-info">
-                            <h3>info@northpak.kz</h3>
-                            <p>Email для запитів</p>
+                        </a>
+                        <h3>Базаева Индира Темирхановна</h3>
+                        <p class="role" data-i18n="managerRole">Менеджер</p>
+                        <a href="tel:+77084878927" class="phone">+7 708 487 89 27</a>
+                    </div>
+
+                    <div class="team-card">
+                        <a href="https://wa.me/77028980205" class="whatsapp-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 19 19" fill="none">
+                                <path d="M9.5 0C14.7469 0 19 4.25315 19 9.49999C19 14.7468 14.7469 19 9.5 19C7.82112 19.0029 6.17176 18.5586 4.72151 17.7127L0.00381468 19L1.28821 14.2804C0.441725 12.8297 -0.00292754 11.1796 1.45052e-05 9.49999C1.45052e-05 4.25315 4.25316 0 9.5 0Z" fill="#25D366"/>
+                            </svg>
+                        </a>
+                        <h3>Лачугина Оксана Витальевна</h3>
+                        <p class="role" data-i18n="managerRole">Менеджер</p>
+                        <a href="tel:+77028980205" class="phone">+7 702 898 02 05</a>
+                    </div>
+
+                    <div class="team-card">
+                        <a href="https://wa.me/77075119649" class="whatsapp-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 19 19" fill="none">
+                                <path d="M9.5 0C14.7469 0 19 4.25315 19 9.49999C19 14.7468 14.7469 19 9.5 19C7.82112 19.0029 6.17176 18.5586 4.72151 17.7127L0.00381468 19L1.28821 14.2804C0.441725 12.8297 -0.00292754 11.1796 1.45052e-05 9.49999C1.45052e-05 4.25315 4.25316 0 9.5 0Z" fill="#25D366"/>
+                            </svg>
+                        </a>
+                        <h3>Пак Снежана Владимировна</h3>
+                        <p class="role" data-i18n="managerRole">Менеджер</p>
+                        <a href="tel:+77075119649" class="phone">+7 707 511 96 49</a>
+                    </div>
+                </div>
+
+                <div class="main-contacts">
+                    <div class="contact-item">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                        </svg>
+                        <div>
+                            <a href="https://maps.google.com/?q=081100,%20Жамбылская%20область,%20Шуский%20район,%20с.%20Толе%20би,%20ул.%20Гагарина,%2044" target="_blank">
+                                081100, Жамбылская область, Шуский район, с. Толе би, ул. Гагарина, 44
+                            </a>
                         </div>
                     </div>
 
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                            </svg>
+                    <div class="contact-item">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                        </svg>
+                        <div>
+                            <a href="mailto:northpak.logistics@gmail.com">northpak.logistics@gmail.com</a>
                         </div>
-                        <div class="contact-info">
-                            <h3>Алмати, пр. Сейфулліна, 498</h3>
-                            <p>Офіс 901</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.53.02C13.84 0 15.14.01 16.44.05c.99.03 1.97.11 2.95.26 1.31.18 2.58.63 3.67 1.72 1.09 1.09 1.54 2.36 1.72 3.67.15.98.23 1.96.26 2.95.04 1.3.05 2.6.05 3.91v.26c0 1.31-.01 2.61-.05 3.91-.03.99-.11 1.97-.26 2.95-.18 1.31-.63 2.58-1.72 3.67-1.09 1.09-2.36 1.54-3.67 1.72-.98.15-1.96.23-2.95.26-1.3.04-2.6.05-3.91.05h-.26c-1.31 0-2.61-.01-3.91-.05-.99-.03-1.97-.11-2.95-.26-1.31-.18-2.58-.63-3.67-1.72-1.09-1.09-1.54-2.36-1.72-3.67-.15-.98-.23-1.96-.26-2.95C.01 14.61 0 13.31 0 12v-.26c0-1.31.01-2.61.05-3.91.03-.99.11-1.97.26-2.95C.49 3.57.94 2.3 2.03 1.21 3.12.12 4.39-.33 5.7-.51c.98-.15 1.96-.23 2.95-.26C9.95.01 11.25 0 12.56 0h-.03zm-.03 2.16c-1.29 0-2.58.01-3.87.05-.98.03-1.95.11-2.92.24-.77.1-1.52.35-2.16.99-.64.64-.89 1.39-.99 2.16-.13.97-.21 1.94-.24 2.92-.04 1.29-.05 2.58-.05 3.87v.26c0 1.29.01 2.58.05 3.87.03.98.11 1.95.24 2.92.1.77.35 1.52.99 2.16.64.64 1.39.89 2.16.99.97.13 1.94.21 2.92.24 1.29.04 2.58.05 3.87.05h.26c1.29 0 2.58-.01 3.87-.05.98-.03 1.95-.11 2.92-.24.77-.1 1.52-.35 2.16-.99.64-.64.89-1.39.99-2.16.13-.97.21-1.94.24-2.92.04-1.29.05-2.58.05-3.87v-.26c0-1.29-.01-2.58-.05-3.87-.03-.98-.11-1.95-.24-2.92-.1-.77-.35-1.52-.99-2.16-.64-.64-1.39-.89-2.16-.99-.97-.13-1.94-.21-2.92-.24-1.29-.04-2.58-.05-3.87-.05h-.26z"/>
+                        </svg>
+                        <div>
+                            <a href="https://www.tiktok.com/@northpak_logistics" target="_blank">@northpak_logistics</a>
                         </div>
                     </div>
                 </div>
@@ -309,24 +343,24 @@
 
         <section class="why-us">
             <div class="container">
-                <h2>Чому обирають NorthPak Logistics</h2>
+                <h2 data-i18n="whyUs">Почему выбирают NorthPak Logistics</h2>
                 
                 <div class="why-grid">
                     <div class="why-item">
                         <div class="why-number">99.6%</div>
-                        <p>вантажів доставлено без пошкоджень</p>
+                        <p data-i18n="safeDelivery">грузов доставлено без повреждений</p>
                     </div>
                     <div class="why-item">
                         <div class="why-number">10+</div>
-                        <p>років досвіду на ринку</p>
+                        <p data-i18n="yearsExp">лет опыта на рынке</p>
                     </div>
                     <div class="why-item">
                         <div class="why-number">400+</div>
-                        <p>клієнтів щороку</p>
+                        <p data-i18n="clientsYear">клиентов ежегодно</p>
                     </div>
                     <div class="why-item">
                         <div class="why-number">24/7</div>
-                        <p>підтримка клієнтів</p>
+                        <p data-i18n="support">поддержка клиентов</p>
                     </div>
                 </div>
             </div>
@@ -334,7 +368,7 @@
 
         <section class="routes">
             <div class="container">
-                <h2>Напрямки перевезень</h2>
+                <h2 data-i18n="routes">Направления перевозок</h2>
                 
                 <div class="routes-grid">
                     <div class="route-card">
@@ -343,7 +377,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064"/>
                             </svg>
                         </div>
-                        <h3>Грузоперевозки з Китаю</h3>
+                        <h3 data-i18n="fromChina">Грузоперевозки из Китая</h3>
                     </div>
 
                     <div class="route-card">
@@ -352,7 +386,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945"/>
                             </svg>
                         </div>
-                        <h3>Грузоперевозки з Європи</h3>
+                        <h3 data-i18n="fromEurope">Грузоперевозки из Европы</h3>
                     </div>
 
                     <div class="route-card">
@@ -361,7 +395,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2"/>
                             </svg>
                         </div>
-                        <h3>Грузоперевозки з Туреччини</h3>
+                        <h3 data-i18n="fromTurkey">Грузоперевозки из Турции</h3>
                     </div>
                 </div>
             </div>
@@ -369,54 +403,54 @@
 
         <section class="how-we-work">
             <div class="container">
-                <h2>Як ми працюємо</h2>
+                <h2 data-i18n="howWeWork">Как мы работаем</h2>
                 
                 <div class="steps-grid">
                     <div class="step-item">
                         <div class="step-number">1</div>
-                        <h3>Приймаємо заявку</h3>
-                        <p>і узгоджуємо деталі</p>
+                        <h3 data-i18n="step1">Принимаем заявку</h3>
+                        <p data-i18n="step1desc">и согласовываем детали</p>
                     </div>
 
                     <div class="step-item">
                         <div class="step-number">2</div>
-                        <h3>Приймаємо вантаж</h3>
-                        <p>з заводу і перевіряємо його</p>
+                        <h3 data-i18n="step2">Принимаем груз</h3>
+                        <p data-i18n="step2desc">с завода и проверяем его</p>
                     </div>
 
                     <div class="step-item">
                         <div class="step-number">3</div>
-                        <h3>Відправляємо товар</h3>
-                        <p>в країну призначення</p>
+                        <h3 data-i18n="step3">Отправляем товар</h3>
+                        <p data-i18n="step3desc">в страну назначения</p>
                     </div>
 
                     <div class="step-item">
                         <div class="step-number">4</div>
-                        <h3>Розмитнення</h3>
-                        <p>товару</p>
+                        <h3 data-i18n="step4">Таможенное оформление</h3>
+                        <p data-i18n="step4desc">товара</p>
                     </div>
 
                     <div class="step-item">
                         <div class="step-number">5</div>
-                        <h3>Привозимо вантаж</h3>
-                        <p>і передаємо вам по акту</p>
+                        <h3 data-i18n="step5">Привозим груз</h3>
+                        <p data-i18n="step5desc">и передаем вам по акту</p>
                     </div>
 
                     <div class="step-item highlight">
                         <div class="step-number">6</div>
-                        <div class="step-label">Оплата по факту</div>
-                        <h3>Оплата</h3>
-                        <p>за доставку товару</p>
+                        <div class="step-label" data-i18n="paymentFact">Оплата по факту</div>
+                        <h3 data-i18n="step6">Оплата</h3>
+                        <p data-i18n="step6desc">за доставку товара</p>
                     </div>
                 </div>
 
                 <div class="guarantee">
-                    <h3>Ми гарантуємо 100% збереження вашого вантажу</h3>
+                    <h3 data-i18n="guarantee100">Мы гарантируем 100% сохранность вашего груза</h3>
                     <ul class="guarantee-list">
-                        <li>Страхування та компенсація на всі 100%</li>
-                        <li>Перевірка на складі до відправки</li>
-                        <li>Консолідація за правилами товарного сусідства</li>
-                        <li>Посилена упаковка за запитом</li>
+                        <li data-i18n="guaranteeInsurance">Страховка и компенсация на все 100%</li>
+                        <li data-i18n="guaranteeCheck">Проверка на складе до отправки</li>
+                        <li data-i18n="guaranteeConsolidation">Консолидация по правилам товарного соседства</li>
+                        <li data-i18n="guaranteePackaging">Усиленная упаковка по запросу</li>
                     </ul>
                 </div>
             </div>
@@ -429,24 +463,24 @@
                         <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"/>
                         </svg>
-                        <span>Логістика без головного болю</span>
+                        <span data-i18n="noHeadache">Логистика без головной боли</span>
                     </div>
-                    <h2>Залишились питання? Ми на зв'язку!</h2>
-                    <p>Задайте їх прямо зараз — наш менеджер відповість протягом 15 хвилин</p>
+                    <h2 data-i18n="questionsTitle">Остались вопросы? Мы на связи!</h2>
+                    <p data-i18n="questionsSubtitle">Задайте их прямо сейчас — наш менеджер ответит в течение 15 минут</p>
                 </div>
 
                 <div class="cta-form">
                     <form class="request-form" action="/api/contact" method="post">
-                        <h3>Розрахуємо вартість доставки за 15 хвилин</h3>
-                        <input type="tel" name="phone" placeholder="Телефон" required>
-                        <input type="text" name="question" placeholder="Питання" required>
+                        <h3 data-i18n="formTitle">Рассчитаем стоимость доставки за 15 минут</h3>
+                        <input type="tel" name="phone" placeholder="Телефон" data-i18n-placeholder="phone" required>
+                        <input type="text" name="question" placeholder="Вопрос" data-i18n-placeholder="question" required>
                         
                         <label class="checkbox-label">
                             <input type="checkbox" name="agree" checked required>
-                            <span>Я згоден з <a href="#">Політикою конфіденційності</a></span>
+                            <span data-i18n="agreePolicy">Я согласен с <a href="#">Политикой конфиденциальности</a></span>
                         </label>
 
-                        <button type="submit" class="btn btn-primary">Отримати відповідь</button>
+                        <button type="submit" class="btn btn-primary" data-i18n="getAnswer">Получить ответ</button>
                     </form>
                 </div>
             </div>
@@ -458,40 +492,40 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <img src="/logo.jpeg" alt="NorthPak Logistics" class="footer-logo">
-                    <p>Міжнародні вантажоперевезення<br>з 2024 року</p>
+                    <p data-i18n="footerTagline">Международные грузоперевозки<br>с 2024 года</p>
                 </div>
 
                 <div class="footer-links">
-                    <h4>Послуги</h4>
+                    <h4 data-i18n="services">Услуги</h4>
                     <ul>
-                        <li><a href="#">Доставка грузів з Китаю</a></li>
-                        <li><a href="#">Доставка грузів з Європи</a></li>
-                        <li><a href="#">Доставка грузів з Туреччини</a></li>
-                        <li><a href="#">Митне оформлення</a></li>
+                        <li><a href="#" data-i18n="deliveryChina">Доставка грузов из Китая</a></li>
+                        <li><a href="#" data-i18n="deliveryEurope">Доставка грузов из Европы</a></li>
+                        <li><a href="#" data-i18n="deliveryTurkey">Доставка грузов из Турции</a></li>
+                        <li><a href="#" data-i18n="customs">Таможенное оформление</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-links">
-                    <h4>Компанія</h4>
+                    <h4 data-i18n="company">Компания</h4>
                     <ul>
-                        <li><a href="#">Про компанію</a></li>
-                        <li><a href="#">Контакти</a></li>
-                        <li><a href="#">Відгуки</a></li>
+                        <li><a href="#" data-i18n="about">О компании</a></li>
+                        <li><a href="#contact" data-i18n="contacts">Контакты</a></li>
+                        <li><a href="/cabinet" data-i18n="cabinet">Личный кабинет</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-contacts">
-                    <h4>Контакти</h4>
-                    <p><strong>Телефон:</strong><br><a href="tel:+77003388050">+7 700 338 8050</a></p>
-                    <p><strong>Email:</strong><br><a href="mailto:info@northpak.kz">info@northpak.kz</a></p>
-                    <p><strong>Адреса:</strong><br>081100, Жамбильська обл., Шуський р-н,<br>с. Толе бі, вул. Гагаріна, 44</p>
-                    <p><strong>Робочий час:</strong><br>Пн-Пт: 9:00 - 19:00<br>Сб: 9:00 - 18:00</p>
+                    <h4 data-i18n="contacts">Контакты</h4>
+                    <p><strong data-i18n="phone">Телефон:</strong><br><a href="tel:+77003388050">+7 700 338 8050</a></p>
+                    <p><strong>Email:</strong><br><a href="mailto:northpak.logistics@gmail.com">northpak.logistics@gmail.com</a></p>
+                    <p><strong data-i18n="address">Адрес:</strong><br>081100, Жамбылская обл., Шуский р-н,<br>с. Толе би, ул. Гагарина, 44</p>
+                    <p><strong data-i18n="workHours">Рабочее время:</strong><br>Пн-Пт: 9:00 - 19:00<br>Сб: 9:00 - 18:00</p>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>©2025 NorthPak Logistics, All Rights Reserved</p>
-                <p>БІН: 250240010778</p>
+                <p>БИН: 250240010778</p>
             </div>
         </div>
     </footer>
