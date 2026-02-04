@@ -53,7 +53,14 @@ if FRONTEND.exists():
 
 @app.get("/logo.jpeg")
 def logo():
-    """Логотип с корня сайта."""
+    p = FRONTEND / "logo.jpeg"
+    if p.exists():
+        return FileResponse(p, media_type="image/jpeg")
+    raise HTTPException(404)
+
+
+@app.get("/favicon.ico")
+def favicon():
     p = FRONTEND / "logo.jpeg"
     if p.exists():
         return FileResponse(p, media_type="image/jpeg")
@@ -189,6 +196,16 @@ def api_company(bin_id: str, user=Depends(get_current_user)):
     if company:
         return {"success": True, "company": company}
     return {"success": False, "error": "Не найдено"}
+
+
+@app.get("/{path:path}")
+def catch_all(path: str):
+    if path.startswith("api/"):
+        raise HTTPException(404, detail="Not Found")
+    p = FRONTEND / "404.html"
+    if p.exists():
+        return FileResponse(p, status_code=404)
+    raise HTTPException(404)
 
 
 if __name__ == "__main__":

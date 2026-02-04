@@ -736,3 +736,8 @@ footer {
 }
 .cabinet-btn:hover { background: var(--primary-hover); }
 .nav-cabinet { font-weight: 500; }
+.nav-user {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-right: 0.25rem;
+}

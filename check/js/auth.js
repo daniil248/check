@@ -131,6 +131,20 @@ function initLoginPage() {
     }
 }
 
+/** Если мы на главной — после проверки токена подставить приветствие в шапку. */
+function initNavUser() {
+    var el = document.getElementById("nav-user");
+    if (!el || !getToken()) return;
+    fetch("/api/me", { headers: authHeaders() })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+            if (data && data.user) {
+                var u = data.user;
+                el.textContent = "Привет, " + (u.name || u.email || "");
+            }
+        });
+}
+
 /** Если мы на главной (index) или кабинете — проверить токен. */
 function initAuthGuard() {
     if (window.location.pathname === "/login" || window.location.pathname.endsWith("login.html")) {
@@ -145,6 +159,7 @@ function initAuthGuard() {
         return;
     }
     requireAuth();
+    initNavUser();
 }
 
 if (document.readyState === "loading") {
