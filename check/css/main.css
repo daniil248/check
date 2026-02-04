@@ -42,15 +42,16 @@ body {
 
 /* ==================== HEADER ==================== */
 .main-header {
-    background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
-    box-shadow: 0 4px 20px var(--shadow);
+    background: var(--bg-white);
+    padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 1rem 0;
+    box-shadow: 0 2px 10px var(--shadow);
+    border-bottom: 1px solid var(--border);
 }
 
-.header-top {
+.header-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -69,73 +70,124 @@ body {
 }
 
 .logo-img {
-    height: 80px;
+    height: 50px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
 }
 
-.header-contacts {
+.main-nav {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
+    flex: 1;
+    justify-content: center;
 }
 
-.header-contacts .tel {
-    color: var(--text-white);
-    font-size: 1.25rem;
+.nav-link {
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header-phone {
+    display: flex;
+    align-items: center;
+}
+
+.phone-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text);
+    font-size: 1.125rem;
     font-weight: 700;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.header-contacts .tel:hover {
-    color: #FFD700;
+.phone-link:hover {
+    color: var(--primary);
 }
 
-.icon-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.phone-link svg {
+    flex-shrink: 0;
 }
 
-.icon-link svg {
-    width: 100%;
-    height: 100%;
-    display: block;
+.callback-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--primary);
+    color: var(--text-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
-.icon-link:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+.callback-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 20, 60, 0.3);
 }
 
 .lang-switcher {
     display: flex;
-    gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.5rem;
-    border-radius: 8px;
+    gap: 0.25rem;
+    background: var(--bg-light);
+    padding: 0.25rem;
+    border-radius: 6px;
 }
 
 .lang-btn {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--text-white);
+    border: none;
+    color: var(--text-light);
     font-weight: 600;
+    font-size: 0.875rem;
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 4px;
     transition: all 0.3s ease;
 }
 
-.lang-btn:hover,
+.lang-btn:hover {
+    background: var(--bg-white);
+    color: var(--primary);
+}
+
 .lang-btn.active {
     background: var(--primary);
-    border-color: var(--primary);
+    color: var(--text-white);
 }
 
 /* ==================== HERO SECTION ==================== */

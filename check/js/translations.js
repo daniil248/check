@@ -7,6 +7,13 @@ const TRANSLATIONS = {
     ru: {
         langCode: 'ru',
         
+        // Header navigation
+        navHome: 'Главная',
+        navServices: 'Наши услуги',
+        navAbout: 'О компании',
+        navContact: 'Контакты',
+        callbackBtn: 'Обратный звонок',
+        
         // Hero section
         heroTitle: 'Международные перевозки<br>из любой точки мира<br><span class="highlight">без предоплаты</span>',
         fromWeight: 'от 50 кг',
@@ -122,6 +129,13 @@ const TRANSLATIONS = {
     en: {
         langCode: 'en',
         
+        // Header navigation
+        navHome: 'Home',
+        navServices: 'Our Services',
+        navAbout: 'About Us',
+        navContact: 'Contacts',
+        callbackBtn: 'Request a Call',
+        
         // Hero section
         heroTitle: 'International freight<br>from anywhere in the world<br><span class="highlight">no prepayment</span>',
         fromWeight: 'from 50 kg',
@@ -236,6 +250,13 @@ const TRANSLATIONS = {
 
     zh: {
         langCode: 'zh',
+        
+        // Header navigation
+        navHome: '首页',
+        navServices: '我们的服务',
+        navAbout: '关于我们',
+        navContact: '联系我们',
+        callbackBtn: '请求回电',
         
         // Hero section
         heroTitle: '国际货运<br>从世界任何地方<br><span class="highlight">无需预付款</span>',
