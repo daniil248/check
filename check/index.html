@@ -18,78 +18,138 @@
                 <img src="logo.jpeg" alt="NorthPak Logistics" class="logo-img">
             </a>
             <ul class="nav-links">
-                <li><a href="#features" data-i18n="navFeatures">Возможности</a></li>
-                <li><a href="#contact" data-i18n="navContacts">Контакты</a></li>
-                <li><span id="nav-user" class="nav-user"></span></li>
-                <li><a href="/cabinet">Личный кабинет</a></li>
-                <li><a href="#" class="nav-logout" id="nav-logout">Выйти</a></li>
-                <li class="lang-switcher">
-                    <button type="button" class="lang-btn" data-lang="ru">RU</button>
-                    <button type="button" class="lang-btn" data-lang="en">EN</button>
-                    <button type="button" class="lang-btn" data-lang="zh">中文</button>
-                </li>
+                <li><a href="#about">О компании</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li><a href="/login" class="btn-login">Войти</a></li>
             </ul>
         </div>
     </nav>
 
     <main>
         <div class="hero">
-            <h1 data-i18n="heroTitle">Проверка контрагентов</h1>
-            <p class="subtitle" data-i18n="heroSubtitle">
-                Сервис разработан для тех, кто хочет работать только с надёжными контрагентами. 
-                Проявите должную осмотрительность и проверяйте своих контрагентов по 37 факторам риска.
+            <h1>NorthPak Logistics</h1>
+            <p class="subtitle">
+                Международные грузоперевозки и логистические решения полного цикла
             </p>
-
-            <div class="bin-badge"><span data-i18n="binLabel">БИН</span>: <strong>250240010778</strong></div>
-
-            <form class="search-form" action="#" method="get">
-                <input type="text" name="search" class="search-input" data-i18n-placeholder="searchPlaceholder"
-                       placeholder="Наименование, БИН/ИИН, ФИО руководителя, телефон">
-                <select class="search-select" name="country" data-i18n-options="countryKz countryKg countryUz">
-                    <option value="kz">Казахстан</option>
-                    <option value="kg">Кыргызстан</option>
-                    <option value="uz">Узбекистан</option>
-                </select>
-                <button type="submit" class="search-btn" data-i18n="searchBtn">Найти</button>
-            </form>
-
-            <div class="examples">
-                <span class="examples-label" data-i18n="examplesLabel">Попробуйте примеры поиска:</span>
-                <a href="#" class="example-link" data-search="250240010778">250240010778</a>
-                <a href="#" class="example-link" data-search="NorthPak">NorthPak</a>
-                <a href="#" class="example-link" data-search="123456789012">Пример</a>
+            <div class="hero-badges">
+                <div class="badge">
+                    <span class="badge-label">БИН</span>
+                    <strong>250240010778</strong>
+                </div>
+                <div class="badge">
+                    <span class="badge-label">Год основания</span>
+                    <strong>2024</strong>
+                </div>
+                <div class="badge badge-verified">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                    </svg>
+                    Официально зарегистрирована в РК
+                </div>
             </div>
-
-            <div id="search-results" class="search-results" style="display: none;"></div>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">Запросить расчёт</a>
+                <a href="#about" class="btn btn-secondary">О компании</a>
+            </div>
         </div>
 
-        <section id="features" class="features">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
+        <section id="about" class="section section-about">
+            <div class="container">
+                <h2 class="section-title">О компании</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p><strong>ТОО "NorthPak Logistics"</strong> — надёжный партнёр в области международных грузоперевозок и логистики между Казахстаном, Китаем и странами СНГ.</p>
+                        <p>Мы специализируемся на полном цикле логистических услуг: от организации перевозки до таможенного оформления и складского хранения.</p>
+                        <div class="company-details">
+                            <div class="detail-item">
+                                <strong>Полное наименование:</strong>
+                                <span>Товарищество с ограниченной ответственностью «NorthPak Logistics»</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>БИН:</strong>
+                                <span>250240010778</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>Юридический адрес:</strong>
+                                <span>081100, Жамбылская область, Шуский район, село Толе би, улица Гагарина, 44</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>Руководитель:</strong>
+                                <span>Пак Юлия Владимировна</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>Дата регистрации:</strong>
+                                <span>2024 год</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&q=80" alt="Грузовые перевозки">
+                    </div>
                 </div>
-                <h3 class="feature-title" data-i18n="feature1Title">Оценка рисков</h3>
-                <p class="feature-desc" data-i18n="feature1Desc">Уникальные аналитические показатели для оценки рисков</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                    </svg>
+        </section>
+
+        <section id="services" class="section section-services">
+            <div class="container">
+                <h2 class="section-title">Наши услуги</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3>Автомобильные перевозки</h3>
+                        <p>Доставка грузов по Казахстану, России, Китаю и странам СНГ. Полный контроль маршрута.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <h3>Таможенное оформление</h3>
+                        <p>Полный цикл таможенных процедур. Декларирование, сертификация, консультации.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                            </svg>
+                        </div>
+                        <h3>Складское хранение</h3>
+                        <p>Современные складские комплексы. Временное хранение, консолидация, упаковка грузов.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3>Мультимодальные перевозки</h3>
+                        <p>Комбинированные схемы доставки: авто+ж/д, авто+авиа. Оптимальные маршруты.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                            </svg>
+                        </div>
+                        <h3>Страхование грузов</h3>
+                        <p>Комплексное страхование на всех этапах транспортировки. Защита от любых рисков.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3>Консультации 24/7</h3>
+                        <p>Круглосуточная поддержка клиентов. Отслеживание грузов в режиме реального времени.</p>
+                    </div>
                 </div>
-                <h3 class="feature-title" data-i18n="feature2Title">Отчеты и выписки</h3>
-                <p class="feature-desc" data-i18n="feature2Desc">Выписки из госреестров, судов и правоохранительных органов</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                </div>
-                <h3 class="feature-title" data-i18n="feature3Title">Проверка руководства</h3>
-                <p class="feature-desc" data-i18n="feature3Desc">Структура собственников и менеджмента, включая иностранных бенефициаров</p>
             </div>
         </section>
 
