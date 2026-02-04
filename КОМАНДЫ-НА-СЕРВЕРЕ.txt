@@ -1,0 +1,86 @@
+Заходим на сервер: ssh root@92.51.44.138
+
+1. Генерируем SECRET_KEY:
+
+openssl rand -hex 32
+
+Скопируй результат.
+
+2. Создаём .env:
+
+cd ~/check/backend
+cat > .env << 'EOF'
+SECRET_KEY=вставь-сюда-результат-openssl-rand-hex-32
+ALLOWED_ORIGINS=https://netchess.ru,https://www.netchess.ru
+OPENSANCTIONS_API_KEY=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+EOF
+
+Отредактируй: nano .env — вставь SECRET_KEY который скопировал выше, сохрани (Ctrl+O, Enter, Ctrl+X).
+
+3. Установка Python зависимостей:
+
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+
+4. Запуск (для теста):
+
+uvicorn main:app --host 0.0.0.0 --port 8000
+
+Откроется http://92.51.44.138:8000 (если порт 8000 открыт в файрволе). Проверь: регистрация, вход, поиск.
+Для остановки: Ctrl+C.
+
+5. Nginx для netchess.ru (HTTPS):
+
+apt update && apt install -y nginx certbot python3-certbot-nginx
+
+cat > /etc/nginx/sites-available/netchess.ru << 'EOF'
+server {
+    listen 80;
+    server_name netchess.ru www.netchess.ru;
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+EOF
+
+ln -s /etc/nginx/sites-available/netchess.ru /etc/nginx/sites-enabled/
+nginx -t
+systemctl reload nginx
+
+certbot --nginx -d netchess.ru -d www.netchess.ru
+
+Certbot спросит email и согласие — отвечай, выдаст сертификат. После этого netchess.ru будет работать по HTTPS.
+
+6. Запуск как сервис (чтобы не падал при выходе из SSH):
+
+cat > /etc/systemd/system/netchess.service << 'EOF'
+[Unit]
+Description=NetchessRU NorthPak
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/root/check/backend
+Environment="PATH=/root/check/backend/venv/bin"
+EnvironmentFile=/root/check/backend/.env
+ExecStart=/root/check/backend/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl enable netchess
+systemctl start netchess
+systemctl status netchess
+
+Готово. Сайт на https://netchess.ru.

@@ -8,16 +8,11 @@ from typing import Optional
 import os
 from pathlib import Path
 
-# Загрузка .env из backend/ или из корня (Vercel)
+# Загрузка .env из backend/
 _env_path = Path(__file__).resolve().parent.parent / ".env"
-if not _env_path.exists():
-    _env_path = Path(__file__).resolve().parent.parent.parent / ".env"
 if _env_path.exists():
-    try:
-        from dotenv import load_dotenv
-        load_dotenv(_env_path)
-    except ImportError:
-        pass
+    from dotenv import load_dotenv
+    load_dotenv(_env_path)
 
 # Ключ OpenSanctions — trial: 50 req/mo, истекает 2026-03-03
 OPENSANCTIONS_API_KEY = os.getenv("OPENSANCTIONS_API_KEY", "")
@@ -141,79 +136,40 @@ def _first(val):
 
 async def search_data_egov(query: str) -> list[dict]:
     """
-    Поиск через data.egov.kz Open Data API.
-    Ищем по медорганизациям, аптекам, нотариусам, ЦОНам и др.
+    Поиск через data.egov.kz (если есть подходящий датасет).
+    Сейчас пробуем общие датасеты — реестр юрлиц может требовать API ключ.
     """
-    if len(query.strip()) < 2:
+    bin_clean = _normalize_bin(query)
+    if len(bin_clean) != 12:
         return []
-    
-    # Импортируем функцию поиска по всем наборам data.egov.kz
-    from egov_api import search_all_egov
-    
-    try:
-        results = await search_all_egov(query)
-        return results
-    except Exception as e:
-        print(f"Ошибка при поиске в data.egov.kz: {e}")
-        return []
+
+    # data.egov.kz — список датасетов по Агентству статистики
+    # Нужен апстрим: https://data.egov.kz/datasets/listbygovagency
+    # Пока возвращаем пустой список — нужна регистрация для API ключа
+    return []
 
 
 async def search_counterparty(query: str, country: str = "kz") -> dict:
     """
     Главная функция поиска. Пробует все источники.
-    ПРИОРИТЕТ: Платные API > Stat.gov.kz > Демо
     """
     if not query or len(query.strip()) < 2:
         return {"success": False, "error": "Слишком короткий запрос", "results": []}
 
     results = []
-    seen = set()
 
-    # 1. Sensus.kz API (платный, полный реестр ЮЛ)
-    sensus_key = os.getenv("SENSUS_API_KEY", "")
-    if sensus_key:
-        try:
-            from sensus_api import search_sensus_companies
-            sensus_results = await search_sensus_companies(query)
-            for r in sensus_results:
-                key = r.get("bin") or r.get("name", "")
-                if key and key not in seen:
-                    results.append(r)
-                    seen.add(key)
-        except Exception as e:
-            print(f"Sensus.kz error: {e}")
+    # 1. Демо (всегда работает)
+    demo = search_demo(query)
+    results.extend(demo)
 
-    # 2. Adata.kz API (платный, полный реестр ЮЛ)
-    adata_key = os.getenv("ADATA_API_KEY", "")
-    if adata_key:
-        try:
-            from adata_api import search_adata_companies
-            adata_results = await search_adata_companies(query)
-            for r in adata_results:
-                key = r.get("bin") or r.get("name", "")
-                if key and key not in seen:
-                    results.append(r)
-                    seen.add(key)
-        except Exception as e:
-            print(f"Adata.kz error: {e}")
-
-    # 3. Stat.gov.kz НЕ РАБОТАЕТ без личного кабинета - удалено
-
-    # 4. Демо-данные (если ничего не нашли или для отладки)
-    if not results or "northpak" in query.lower() or "250240010778" in query:
-        demo = search_demo(query)
-        for r in demo:
-            key = r.get("bin") or r.get("name", "")
-            if key and key not in seen:
-                results.append(r)
-                seen.add(key)
-
-    # 5. OpenSanctions (санкции/PEP проверка)
+    # 2. OpenSanctions (если есть ключ) — дополняем санкциями/PEP
     if OPENSANCTIONS_API_KEY:
         os_results = await search_opensanctions(query, country)
+        # избегаем дублей по БИН/названию
+        seen = {r.get("bin") or r.get("name", "") for r in results}
         for r in os_results:
             key = r.get("bin") or r.get("name", "")
-            if key and key not in seen:
+            if key not in seen:
                 results.append(r)
                 seen.add(key)
 
