@@ -4,20 +4,20 @@
  */
 
 :root {
-    --primary: #C41E3A;
-    --primary-dark: #9B1830;
-    --secondary: #1A2332;
-    --secondary-light: #2C3E50;
-    --accent: #E74C3C;
-    --text: #2C3E50;
-    --text-light: #7F8C8D;
+    --primary: #DC143C;
+    --primary-dark: #B8001F;
+    --secondary: #1A1A1A;
+    --secondary-light: #2D2D2D;
+    --accent: #FF4757;
+    --text: #1A1A1A;
+    --text-light: #666666;
     --text-white: #FFFFFF;
-    --bg-light: #F8F9FA;
+    --bg-light: #F5F5F5;
     --bg-white: #FFFFFF;
-    --border: #E1E8ED;
-    --success: #27AE60;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --shadow-hover: rgba(0, 0, 0, 0.15);
+    --border: #DDDDDD;
+    --success: #25D366;
+    --shadow: rgba(0, 0, 0, 0.08);
+    --shadow-hover: rgba(0, 0, 0, 0.12);
 }
 
 * {
@@ -136,7 +136,7 @@ body {
 
 /* ==================== HERO SECTION ==================== */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 50%, var(--primary-dark) 100%);
     padding: 4rem 0;
     position: relative;
     overflow: hidden;
@@ -536,98 +536,63 @@ body {
     font-size: 1.125rem;
 }
 
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.team-card {
+.main-contact-card {
+    max-width: 600px;
+    margin: 0 auto;
     background: var(--bg-white);
-    padding: 2rem;
-    border-radius: 12px;
+    padding: 4rem 3rem;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px var(--shadow-hover);
     text-align: center;
-    box-shadow: 0 4px 12px var(--shadow);
-    transition: all 0.3s ease;
 }
 
-.team-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px var(--shadow-hover);
-}
-
-.whatsapp-icon {
-    display: inline-flex;
+.contact-icon-big {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2rem;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
-    background: var(--success);
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     border-radius: 50%;
-    margin-bottom: 1rem;
+    color: var(--text-white);
+}
+
+.main-phone {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary);
+    text-decoration: none;
+    margin-bottom: 2rem;
     transition: all 0.3s ease;
+    letter-spacing: 2px;
 }
 
-.whatsapp-icon:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
-}
-
-.team-card h3 {
-    font-size: 1.125rem;
-    margin-bottom: 0.5rem;
-    color: var(--secondary);
-}
-
-.role {
-    color: var(--text-light);
-    font-size: 0.875rem;
-    margin-bottom: 1rem;
-}
-
-.phone {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.125rem;
-    transition: color 0.3s ease;
-}
-
-.phone:hover {
+.main-phone:hover {
     color: var(--primary-dark);
+    transform: scale(1.05);
 }
 
-.main-contacts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    padding: 2rem;
-    background: var(--bg-white);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px var(--shadow);
-}
-
-.contact-item {
-    display: flex;
-    align-items: flex-start;
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
     gap: 1rem;
-}
-
-.contact-item svg {
-    color: var(--primary);
-    flex-shrink: 0;
-}
-
-.contact-item a {
-    color: var(--text);
+    padding: 1.5rem 3rem;
+    background: var(--success);
+    color: var(--text-white);
     text-decoration: none;
-    transition: color 0.3s ease;
+    border-radius: 50px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
 }
 
-.contact-item a:hover {
-    color: var(--primary);
+.whatsapp-btn:hover {
+    background: #1FA855;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
 }
 
 /* ==================== WHY US ==================== */
