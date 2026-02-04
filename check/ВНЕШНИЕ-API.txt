@@ -1,0 +1,108 @@
+Инструкции по подключению внешних API и сервисов
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Google OAuth (вход через Google)
+
+Где взять:
+- https://console.cloud.google.com/
+- Создать проект или выбрать существующий
+- APIs & Services → Credentials → Create Credentials → OAuth 2.0 Client ID
+- Тип: Web application
+- Authorized redirect URIs:
+  https://netchess.ru/api/auth/google/callback
+  http://localhost:8007/api/auth/google/callback (для теста)
+
+Получишь:
+- GOOGLE_CLIENT_ID
+- GOOGLE_CLIENT_SECRET
+
+Добавить в backend/.env:
+GOOGLE_CLIENT_ID=ваш-client-id
+GOOGLE_CLIENT_SECRET=ваш-client-secret
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2. Отправка Email (восстановление пароля)
+
+Варианты SMTP:
+
+A) Gmail (бесплатно, до 500 писем/день):
+- Включить "Двухэтапную аутентификацию" в Google аккаунте
+- Создать "Пароль приложения": https://myaccount.google.com/apppasswords
+- Получишь 16-символьный пароль
+
+В backend/.env:
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=твой@gmail.com
+SMTP_PASSWORD=пароль-приложения-16-символов
+
+B) SendGrid (бесплатно, 100 писем/день):
+- https://sendgrid.com/ → Sign Up
+- Settings → API Keys → Create API Key
+- Full Access
+
+В backend/.env:
+SENDGRID_API_KEY=SG.xxxxx
+
+C) Mailgun (бесплатно, 5000 писем/месяц):
+- https://www.mailgun.com/ → Sign Up
+- Sending → Domain settings → SMTP credentials
+
+В backend/.env:
+SMTP_HOST=smtp.mailgun.org
+SMTP_PORT=587
+SMTP_USER=postmaster@твой-домен
+SMTP_PASSWORD=api-key
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3. OpenSanctions API (санкции, PEP проверка)
+
+Уже подключён в коде, нужен только ключ.
+
+Где взять:
+- https://www.opensanctions.org/account/
+- Sign Up → API Keys → Create (бесплатно: 50 запросов/месяц)
+
+В backend/.env:
+OPENSANCTIONS_API_KEY=ваш-ключ
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4. Реальные реестры компаний (вместо демо-данных)
+
+Казахстан:
+- Stat.gov.kz API (данные ЮЛ, ИП) — платный
+- eGov API — требует интеграцию через Egov Mobile, сложно
+- Альтернатива: парсинг https://open.kgd.gov.kz/ (нелегально)
+
+Кыргызстан:
+- API Stat.kg — платный или по запросу для интеграции
+
+Узбекистан:
+- API e-ijro.uz, open-data.uz — по запросу, официальная интеграция
+
+Рекомендация:
+- Для прототипа оставить демо-данные + OpenSanctions
+- Для продакшена — договариваться с госорганами или покупать доступ к агрегаторам (типа statsnet.co сами имеют)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+5. Дополнительно (не обязательно)
+
+Телеграм-бот (уведомления):
+- https://core.telegram.org/bots#botfather
+- Создать бота → получить TOKEN
+- В backend/.env: TELEGRAM_BOT_TOKEN=
+
+Sentry (мониторинг ошибок):
+- https://sentry.io/ → бесплатный план
+- Create Project → получить DSN
+- В backend/.env: SENTRY_DSN=
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+На сервере после добавления ключей в .env перезапустить:
+systemctl restart netchess

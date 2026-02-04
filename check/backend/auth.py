@@ -36,14 +36,28 @@ def init_db():
             created_at TEXT NOT NULL,
             name TEXT,
             picture TEXT,
-            google_id TEXT
+            google_id TEXT,
+            reset_token TEXT,
+            reset_token_expires TEXT
         )
     """)
-    for col in ("name", "picture", "google_id"):
+    for col in ("name", "picture", "google_id", "reset_token", "reset_token_expires"):
         try:
             conn.execute(f"ALTER TABLE users ADD COLUMN {col} TEXT")
         except sqlite3.OperationalError:
             pass
+    
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS search_history (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            query TEXT NOT NULL,
+            country TEXT NOT NULL,
+            results_count INTEGER,
+            created_at TEXT NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES users (id)
+        )
+    """)
     conn.commit()
     conn.close()
 

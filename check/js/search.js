@@ -56,16 +56,28 @@ async function doSearch(query, country) {
             return;
         }
 
-        let html = `<h3>Найдено: ${data.count}</h3>`;
+        let html = `<div class="search-results-header"><h3>Найдено: ${data.count}</h3></div>`;
         data.results.forEach(c => {
+            const statusClass = c.status === 'Действующее' ? 'status-active' : 'status-inactive';
             html += `
                 <div class="search-result-card">
-                    <div class="search-result-name">${escapeHtml(c.name_short || c.name)}</div>
+                    <div class="search-result-header">
+                        <div class="search-result-name">${escapeHtml(c.name_short || c.name)}</div>
+                        <span class="search-result-status ${statusClass}">${escapeHtml(c.status)}</span>
+                    </div>
+                    <div class="search-result-bin">БИН: <strong>${escapeHtml(c.bin)}</strong></div>
                     <div class="search-result-meta">
-                        <span><strong>БИН:</strong> ${escapeHtml(c.bin)}</span>
-                        <span><strong>Статус:</strong> ${escapeHtml(c.status)}</span>
-                        <span><strong>Руководитель:</strong> ${escapeHtml(c.director)}</span>
-                        <span><strong>Адрес:</strong> ${escapeHtml(c.address)}</span>
+                        <div class="search-result-row">
+                            <span class="meta-label">Руководитель:</span>
+                            <span class="meta-value">${escapeHtml(c.director)}</span>
+                        </div>
+                        <div class="search-result-row">
+                            <span class="meta-label">Адрес:</span>
+                            <span class="meta-value">${escapeHtml(c.address)}</span>
+                        </div>
+                    </div>
+                    <div class="search-result-actions">
+                        <a href="/company/${encodeURIComponent(c.bin)}" class="result-detail-btn">Подробнее</a>
                     </div>
                 </div>
             `;

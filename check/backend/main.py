@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from urllib.parse import urlencode
+from datetime import datetime
 
 from fastapi import Depends, HTTPException, Request
 from fastapi import FastAPI
@@ -85,6 +86,11 @@ def login_page():
 @app.get("/cabinet")
 def cabinet_page():
     return FileResponse(FRONTEND / "cabinet.html")
+
+
+@app.get("/company/{bin_id}")
+def company_page(bin_id: str):
+    return FileResponse(FRONTEND / "company.html")
 
 
 class RegisterBody(BaseModel):
@@ -186,7 +192,17 @@ async def google_callback(request: Request, code: str = ""):
 @app.get("/api/search")
 async def api_search(q: str, country: str = "kz", user=Depends(get_current_user)):
     """Поиск контрагентов (требуется авторизация)."""
-    return await search_counterparty(q.strip(), country)
+    result = await search_counterparty(q.strip(), country)
+    # Сохраняем в историю
+    import sqlite3
+    conn = sqlite3.connect(Path(__file__).resolve().parent / "users.db")
+    conn.execute(
+        "INSERT INTO search_history (user_id, query, country, results_count, created_at) VALUES (?, ?, ?, ?, ?)",
+        (user["id"], q.strip(), country, result.get("count", 0), datetime.utcnow().isoformat())
+    )
+    conn.commit()
+    conn.close()
+    return result
 
 
 @app.get("/api/company/{bin_id}")
@@ -195,6 +211,20 @@ def api_company(bin_id: str, user=Depends(get_current_user)):
     if company:
         return {"success": True, "company": company}
     return {"success": False, "error": "Не найдено"}
+
+
+@app.get("/api/search-history")
+def get_search_history(user=Depends(get_current_user)):
+    """История поисков пользователя."""
+    import sqlite3
+    conn = sqlite3.connect(Path(__file__).resolve().parent / "users.db")
+    conn.row_factory = sqlite3.Row
+    rows = conn.execute(
+        "SELECT * FROM search_history WHERE user_id = ? ORDER BY created_at DESC LIMIT 50",
+        (user["id"],)
+    ).fetchall()
+    conn.close()
+    return {"ok": True, "history": [dict(row) for row in rows]}
 
 
 @app.get("/{path:path}")
