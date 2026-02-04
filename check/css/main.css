@@ -160,6 +160,14 @@ body {
     color: white;
 }
 
+.delivery-info {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
 .form-fields {
     display: flex;
     flex-direction: column;
