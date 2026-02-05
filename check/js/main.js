@@ -4,6 +4,49 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    // ==================== МОБИЛЬНОЕ МЕНЮ (БУРГЕР) ====================
+    const burger = document.querySelector('.burger');
+    const mainNav = document.getElementById('main-nav');
+    const backdrop = document.getElementById('nav-backdrop');
+    const body = document.body;
+
+    function openMenu() {
+        if (!mainNav || !burger) return;
+        mainNav.classList.add('nav-open');
+        if (backdrop) backdrop.classList.add('nav-open');
+        burger.classList.add('active');
+        burger.setAttribute('aria-expanded', 'true');
+        burger.setAttribute('aria-label', 'Закрыть меню');
+        body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        if (!mainNav || !burger) return;
+        mainNav.classList.remove('nav-open');
+        if (backdrop) backdrop.classList.remove('nav-open');
+        burger.classList.remove('active');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Открыть меню');
+        body.style.overflow = '';
+    }
+
+    if (burger && mainNav) {
+        burger.addEventListener('click', function() {
+            if (mainNav.classList.contains('nav-open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+        if (backdrop) backdrop.addEventListener('click', closeMenu);
+        mainNav.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeMenu();
+        });
+    }
     
     // ==================== ПЛАВНАЯ ПРОКРУТКА К СЕКЦИЯМ ====================
     const navLinks = document.querySelectorAll('.nav-link, .footer-links a');

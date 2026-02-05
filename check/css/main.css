@@ -1056,6 +1056,67 @@ body {
     opacity: 0.6;
 }
 
+/* ==================== BURGER (скрыт на десктопе) ==================== */
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: var(--bg-light);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: background 0.3s ease;
+}
+
+.burger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.burger:hover {
+    background: var(--border);
+}
+
+.burger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .nav-backdrop.nav-open {
+        display: block;
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 1024px) {
     .hero .container {
@@ -1071,23 +1132,134 @@ body {
     }
 
     .logo-img {
-        height: 60px;
+        height: 45px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .about-intro h2 {
+        font-size: 2rem;
     }
 }
 
 @media (max-width: 768px) {
-    .header-top {
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Header: бургер + мобильное меню */
+    .burger {
+        display: flex;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(320px, 85vw);
+        background: var(--bg-white);
         flex-direction: column;
+        justify-content: flex-start;
+        padding: 5rem 1.5rem 2rem;
+        gap: 0;
+        box-shadow: -4px 0 20px var(--shadow-hover);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .main-nav.nav-open {
+        transform: translateX(0);
+    }
+
+    .main-nav .nav-link {
+        display: block;
+        padding: 1rem 0;
+        font-size: 1.125rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .header-wrapper {
+        flex-wrap: wrap;
         gap: 1rem;
     }
 
+    .header-right {
+        margin-left: auto;
+        gap: 0.75rem;
+    }
+
+    .header-phone .phone-link span {
+        display: none;
+    }
+
+    .callback-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .lang-switcher {
+        padding: 0.2rem;
+    }
+
+    .lang-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8125rem;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 2.5rem 0;
+    }
+
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        line-height: 1.3;
+    }
+
+    .hero-form {
+        padding: 1.5rem;
+    }
+
+    .request-form h3 {
+        font-size: 1.25rem;
+    }
+
+    .form-fields input {
+        padding: 0.875rem;
+        font-size: 16px; /* отключает зум на iOS при фокусе */
     }
 
     .hero-features {
         flex-direction: column;
         gap: 1rem;
+    }
+
+    /* Services */
+    .services,
+    .about-dark,
+    .company-info,
+    .contact-section,
+    .why-us,
+    .routes,
+    .how-we-work,
+    .final-cta {
+        padding: 2.5rem 0;
+    }
+
+    .services h2,
+    .company-info h2,
+    .contact-section h2,
+    .why-us h2,
+    .routes h2,
+    .how-we-work h2 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
     }
 
     .services-grid,
@@ -1096,13 +1268,126 @@ body {
     .routes-grid,
     .steps-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .stat-number {
+        font-size: 1.75rem;
+    }
+
+    .stat-label {
+        font-size: 0.8125rem;
+    }
+
+    /* Company / detail rows */
+    .detail-row {
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.75rem 0;
+    }
+
+    .detail-label {
+        min-width: unset;
+    }
+
+    .company-details {
+        padding: 1.25rem;
+    }
+
+    /* Contact */
+    .main-contacts {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    .contact-item {
+        flex-wrap: wrap;
+    }
+
+    .contact-item a {
+        word-break: break-word;
+    }
+
+    /* Steps */
+    .step-item {
+        padding: 1.5rem;
+    }
+
+    .step-number {
+        width: 48px;
+        height: 48px;
+        font-size: 1.25rem;
+    }
+
+    .guarantee {
+        padding: 2rem 1.5rem;
+    }
+
+    .guarantee h3 {
+        font-size: 1.35rem;
+    }
+
+    .guarantee-list {
+        grid-template-columns: 1fr;
+    }
+
+    /* CTA */
+    .cta-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-form {
+        padding: 1.5rem;
+    }
+
+    /* Footer */
     .footer-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .footer-bottom {
         flex-direction: column;
+        text-align: center;
+        padding-top: 1.5rem;
+    }
+
+    .footer-contacts p {
+        font-size: 0.9375rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .why-number {
+        font-size: 2.25rem;
+    }
+
+    .route-card,
+    .service-card,
+    .team-card {
+        padding: 1.5rem;
     }
 }
