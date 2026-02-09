@@ -59,9 +59,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('https://images.unsplash.com/photo-1633155565182-16c06ed45ec5?w=600&q=80') no-repeat right center;
-    background-size: auto 140%;
-    opacity: 0.22;
+    background: url('https://p3.pikrepo.com/preview/313/917/kenworth-t680-semi-trailer-truck-red-truck-open-highway-clear-blue-sky-vibrant-red-driving-down-road-semi-truck-highway-truck-trucking-industry.jpg') no-repeat right center;
+    background-size: auto 130%;
+    opacity: 0.26;
     pointer-events: none;
 }
 
@@ -1170,8 +1170,8 @@ body {
     }
 
     .main-header::before {
-        background-size: auto 120%;
-        opacity: 0.18;
+        background-size: auto 115%;
+        opacity: 0.24;
     }
 
     /* Header: бургер + мобильное меню */
