@@ -16,6 +16,9 @@ FRONTEND = Path(__file__).resolve().parent.parent
 if FRONTEND.exists():
     app.mount("/css", StaticFiles(directory=FRONTEND / "css"), name="css")
     app.mount("/js", StaticFiles(directory=FRONTEND / "js"), name="js")
+    images_dir = FRONTEND / "images"
+    if images_dir.exists():
+        app.mount("/images", StaticFiles(directory=images_dir), name="images")
 
 
 @app.get("/logo.jpeg")

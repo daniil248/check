@@ -42,13 +42,33 @@ body {
 
 /* ==================== HEADER ==================== */
 .main-header {
-    background: var(--bg-white);
+    background: linear-gradient(135deg, #fff5f5 0%, #ffffff 35%, #fff8f8 70%, #fff0f0 100%);
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px var(--shadow);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(220, 20, 60, 0.12);
+    overflow: hidden;
+}
+
+.main-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/images/truck-header.svg') no-repeat right center;
+    background-size: min(280px, 45vw) auto;
+    opacity: 0.12;
+    pointer-events: none;
+    color: var(--primary);
+}
+
+.main-header .container {
+    position: relative;
+    z-index: 1;
 }
 
 .header-wrapper {
@@ -1150,6 +1170,11 @@ body {
         padding: 0 1rem;
     }
 
+    .main-header::before {
+        background-size: min(200px, 55vw) auto;
+        opacity: 0.1;
+    }
+
     /* Header: бургер + мобильное меню */
     .burger {
         display: flex;
@@ -1161,7 +1186,7 @@ body {
         right: 0;
         bottom: 0;
         width: min(320px, 85vw);
-        background: var(--bg-white);
+        background: linear-gradient(180deg, #fff8f8 0%, #ffffff 100%);
         flex-direction: column;
         justify-content: flex-start;
         padding: 5rem 1.5rem 2rem;
