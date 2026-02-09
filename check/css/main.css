@@ -59,9 +59,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=85') no-repeat right center;
-    background-size: auto 130%;
-    opacity: 0.26;
+    background: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1200&q=85') repeat-x center;
+    background-size: auto 100%;
+    opacity: 0.5;
     pointer-events: none;
 }
 
@@ -1170,8 +1170,8 @@ body {
     }
 
     .main-header::before {
-        background-size: auto 115%;
-        opacity: 0.24;
+        background-size: auto 90%;
+        opacity: 0.5;
     }
 
     /* Header: бургер + мобильное меню */
