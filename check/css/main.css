@@ -1,5 +1,5 @@
 /**
- * NorthPak Logistics - Main Styles
+ * NorthPak Logistics - Main Styles (v2 — шапка с грузовиком)
  * Красивый профессиональный дизайн логистической компании
  */
 
@@ -59,11 +59,10 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('/images/truck-header.svg') no-repeat right center;
-    background-size: min(280px, 45vw) auto;
-    opacity: 0.12;
+    background: url('https://images.unsplash.com/photo-1633155565182-16c06ed45ec5?w=600&q=80') no-repeat right center;
+    background-size: auto 140%;
+    opacity: 0.22;
     pointer-events: none;
-    color: var(--primary);
 }
 
 .main-header .container {
@@ -1171,8 +1170,8 @@ body {
     }
 
     .main-header::before {
-        background-size: min(200px, 55vw) auto;
-        opacity: 0.1;
+        background-size: auto 120%;
+        opacity: 0.18;
     }
 
     /* Header: бургер + мобильное меню */
